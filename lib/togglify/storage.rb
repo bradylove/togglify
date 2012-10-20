@@ -8,6 +8,10 @@ module Togglify
       @pstore = PStore.new(Togglify.file_path)
     end
 
+    def list
+      @pstore.transaction(true) { @pstore.roots }
+    end
+
     def read(toggle)
       toggle = sanitize(toggle)
       @pstore.transaction(true) { @pstore[toggle] }
@@ -26,7 +30,7 @@ module Togglify
     private
 
     def sanitize(toggle)
-      toggle.downcase.to_sym
+      toggle.to_s.downcase.to_sym
     end
   end
 end

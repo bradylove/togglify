@@ -43,6 +43,13 @@ describe Togglify::Storage do
     it "should change the toggle to sym if string is given" do
       storage.read("forum").should eq({ id: :forum, status: :disabled })
     end
+
+    it "should get all the root objects if no parameters given" do
+      storage.write_off(:forum)
+      storage.write_off(:blog)
+
+      storage.list.should eq([:forum, :blog])
+    end
   end
 
   context "#sanitize" do
@@ -52,6 +59,10 @@ describe Togglify::Storage do
 
     it "should downcase a string before symbolizing" do
       storage.send(:sanitize, "Forum").should eq :forum
+    end
+
+    it "should downcase and symbolize a class name" do
+      storage.send(:sanitize, String).should eq :string
     end
   end
 end
