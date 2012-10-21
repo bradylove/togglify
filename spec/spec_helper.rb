@@ -14,7 +14,17 @@ end
 
 # Simulate rails root
 module Rails
+  @@env = "test"
+
   def self.root
     File.expand_path("../support/", __FILE__)
+  end
+
+  def self.env
+    @@env
+  end
+
+  def self.env=(env)
+    @@env = env
   end
 end

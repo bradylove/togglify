@@ -18,13 +18,24 @@ module Togglify
     end
 
     def write_on(toggle)
-      toggle = sanitize(toggle)
-      @pstore.transaction { @pstore[toggle.to_sym] = { id: toggle.to_sym, status: :enabled } }
+      write(toggle, :enabled)
     end
 
     def write_off(toggle)
+      write(toggle, :disabled)
+    end
+p
+    def write(toggle, status)
       toggle = sanitize(toggle)
-      @pstore.transaction { @pstore[toggle.to_sym] = { id: toggle.to_sym, status: :disabled } }
+      status = sanitize(status)
+      existing_data = read(toggle) || {}
+      existing_data.merge!(id: toggle, env => status)
+
+      @pstore.transaction { @pstore[toggle] = existing_data }
+    end
+
+    def env
+      Rails.env.to_sym
     end
 
     private
