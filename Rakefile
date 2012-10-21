@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "togglify"
   gem.homepage = "http://github.com/bradylove/togglify"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A Rubygem for feature toggling in Rails}
+  gem.description = %Q{A Rubygem that allows you to easily enable/disable parts of your ruby code.}
   gem.email = "love.brady@gmail.com"
   gem.authors = ["Brady Love"]
   # dependencies defined in Gemfile

@@ -9,7 +9,7 @@ module Togglify
 
   class << self
     def file_path
-      @@file_path || Rails.root + "/.togglify"
+      @@file_path || Rails.root + ".togglify"
     end
 
     def file_path=(file_path)

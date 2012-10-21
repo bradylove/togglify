@@ -1,0 +1,13 @@
+%h1
+  Welcome to the wonderful world of Togglify!
+
+%hr
+%p
+  Here is an example of an inline block using Togglify
+  = Togglify(:forum) { link_to "Forum Enabled", "#" }
+
+%hr
+%p
+  Here is an example of using a traditional block using Togglify
+  - Togglify :blog do
+    = link_to "Blog Enabled", "#"
