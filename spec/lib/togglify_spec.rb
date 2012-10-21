@@ -24,6 +24,18 @@ describe Togglify do
     end
   end
 
+  context "#enable" do
+    it "should enable the toggle" do
+      Togglify.enable :forum
+      Togglify.enabled?(:forum).should be_true
+    end
+
+    it "should disable the toggle" do
+      Togglify.disable :forum
+      Togglify.enabled?(:forum).should be_false
+    end
+  end
+
   context "#enabled?" do
     it "should be enabled by default" do
       FileUtils.rm path

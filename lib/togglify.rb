@@ -24,6 +24,14 @@ module Togglify
       false
     end
 
+    def enable(toggle)
+      storage.write_on toggle
+    end
+
+    def disable(toggle)
+      storage.write_off toggle
+    end
+
     private
 
     def storage
