@@ -3,11 +3,15 @@
 
 %hr
 %p
-  Here is an example of an inline block using Togglify
-  = Togglify(:forum) { link_to "Forum Enabled", "#" }
+  Here is an example of an inline block using Togglify |
+  = link_to "Enable", enable_welcome_path(toggle_name: "forum"), method: :post
+  = link_to "Disable", disable_welcome_path(toggle_name: "forum"), method: :post
+  = Togglify(:forum) { "Forum Enabled" }
 
 %hr
 %p
   Here is an example of using a traditional block using Togglify
+  = link_to "Enable", enable_welcome_path(toggle_name: "blog"), method: :post
+  = link_to "Disable", disable_welcome_path(toggle_name: "blog"), method: :post
   - Togglify :blog do
     = link_to "Blog Enabled", "#"
