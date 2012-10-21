@@ -39,3 +39,7 @@ module Togglify
     end
   end
 end
+
+if defined? Rails
+  require "togglify/railtie"
+end
