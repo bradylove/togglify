@@ -1,0 +1,9 @@
+Benchmark.bm(7) do |x|
+  x.report("1000:")   { 1000.times { Togglify.enable(:blog); Togglify.enabled?(:blog); Togglify.disable(:blog); Togglify.enabled?(:blog) } }
+  x.report("10000:")  { 10000.times { Togglify.enable(:blog); Togglify.enabled?(:blog); Togglify.disable(:blog); Togglify.enabled?(:blog) } }
+  x.report("100000:") { 100000.times { Togglify.enable(:blog); Togglify.enabled?(:blog); Togglify.disable(:blog); Togglify.enabled?(:blog) } }
+end
+              user     system      total        real
+1000:     1.310000   0.300000   1.610000 (  2.700156)
+10000:   13.310000   3.070000  16.380000 ( 26.895149)
+100000: 135.260000  31.520000 166.780000 (276.537799)
