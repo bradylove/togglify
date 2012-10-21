@@ -24,7 +24,13 @@ module Togglify
     def write_off(toggle)
       write(toggle, :disabled)
     end
-p
+
+    def env
+      Rails.env.to_sym
+    end
+
+    private
+
     def write(toggle, status)
       toggle = sanitize(toggle)
       status = sanitize(status)
@@ -33,12 +39,6 @@ p
 
       @pstore.transaction { @pstore[toggle] = existing_data }
     end
-
-    def env
-      Rails.env.to_sym
-    end
-
-    private
 
     def sanitize(toggle)
       toggle.to_s.downcase.to_sym
