@@ -24,7 +24,9 @@ Anywhere in your code you can add a togglify block giving it a name. Like this o
 
 By default all toggles are enabled, meaning that any code put in those blocks will be executed. So when this block of code gets ran it will output the puts statement. Now to disable this block of code and any block of cade with the tag :sample_name you can run the following rake command.
 
-    $ rake togglify:disable[sample_name] # In ZSH  you will have to escape the square brackets with a \ or prepend the rake command with noglob
+    # In ZSH  you will have to escape the square brackets with a \ or prepend the rake command
+    # with noglob
+    $ rake togglify:disable[sample_name]
 
 Any Togglify block with the name :sample_name is now disabled in the `development` environment. To disable it in other environments append the command with `RAILS_ENV=environment` for example to disable these blocks in the `test` environment you can run
 
@@ -32,7 +34,8 @@ Any Togglify block with the name :sample_name is now disabled in the `developmen
 
 Then to re-enable all the code blocks with the sample_name tag you can run
 
-    $ rake togglify:enable[sample_name] # Again, this defaults to development environment. append RAILS_ENV= for different environments
+    # Again, this defaults to development environment. append RAILS_ENV= for different environments
+    $ rake togglify:enable[sample_name]
 
 ## Contributing to togglify
 
