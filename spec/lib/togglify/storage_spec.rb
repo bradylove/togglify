@@ -10,7 +10,6 @@ describe Togglify::Storage do
 
   before(:each) do
     Rails.env = "test"
-
   end
 
   it "should be a class" do

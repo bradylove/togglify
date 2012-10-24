@@ -24,6 +24,17 @@ module Togglify
       false
     end
 
+    def disabled?(toggle)
+      stored_toggle = storage.read(toggle)
+      return false if stored_toggle.nil?
+      return false if stored_toggle[storage.env] == :enabled
+      true
+    end
+
+    def status(toggle)
+      storage.read(toggle)
+    end
+
     def enable(toggle)
       storage.write_on toggle
     end

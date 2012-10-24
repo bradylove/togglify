@@ -53,6 +53,36 @@ describe Togglify do
     end
   end
 
+  context "#disabled?" do
+    it "should return false by default" do
+      FileUtils.rm path
+      Togglify.disabled?(:forum).should be_false
+    end
+
+    it "should return true if its disabled" do
+      Togglify.send(:storage).write_off :forum
+      Togglify.disabled?(:forum).should be_true
+    end
+
+    it "should return false if it is enabled" do
+      Togglify.send(:storage).write_on :forum
+      Togglify.disabled?(:forum).should be_false
+    end
+  end
+
+  context "#status" do
+    it "should return the hash of the toggle" do
+      Togglify.enable :forum
+      Rails.env = "development"
+      Togglify.disable :forum
+      Togglify.status(:forum).should eq({
+                                          id: :forum,
+                                          test: :enabled,
+                                          development: :disabled
+                                        })
+    end
+  end
+
   context "#storage" do
     it "should have a storage object" do
       Togglify.send(:storage).class.should eq Togglify::Storage

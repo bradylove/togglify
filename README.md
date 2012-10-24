@@ -37,6 +37,19 @@ Then to re-enable all the code blocks with the sample_name tag you can run
     # Again, this defaults to development environment. append RAILS_ENV= for different environments
     $ rake togglify:enable[sample_name]
 
+You can programatically enable and disable toggles with the following code
+
+    Togglify.enable(:sample_name)
+    Togglify.disable(:sample_name)
+
+Then to check the status of a toggle you can call
+
+    Togglify.enabled?(:sample_name) # Returns true or false
+    Togglify.enabled?(:sample_name) # Returns true or false
+    Togglify.status(:sample_name)   # Returns hash with status { :id => :sample_name, :development => :enabled}
+
+
+
 ## Contributing to togglify
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
